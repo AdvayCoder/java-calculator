@@ -1,8 +1,10 @@
 package com.asavahtech.calculator;
 import com.asavahtech.calculator.view.MainFrame;
+import com.asavahtech.calculator.controller.CalcController;
+
 /**
  *
- * @author advay
+ * @author palni
  */
 public class Calculator {
 
