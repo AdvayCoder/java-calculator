@@ -30,3 +30,4 @@ public class CalcController {
         return 0.0;  //for now to avoid error of no return
     }
 }
+
