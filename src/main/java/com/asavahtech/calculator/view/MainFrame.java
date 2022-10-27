@@ -18,6 +18,7 @@ import com.asavahtech.calculator.controller.CalcController;
  *
  * @author palni
  */
+
 public class MainFrame extends javax.swing.JFrame {
 
     /**
@@ -42,6 +43,9 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
     
+    private void addToOutputPanel(String fragment) {
+        outputField.setText(outputField.getText() + fragment);
+    }
     
 
     /**
@@ -51,8 +55,8 @@ public class MainFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
-    //init the controller class
-    CalcController controller = new CalcController();
+    //controller class init moved to bottom due to forward reference issues with the needed constructor parameter
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -93,7 +97,9 @@ public class MainFrame extends javax.swing.JFrame {
         outputPanel.setLayout(new java.awt.BorderLayout());
 
         outputField.setEditable(false);
-        outputField.setBackground(new java.awt.Color(38, 21, 144));
+        outputField.setBackground(new java.awt.Color(50, 31, 171));
+        outputField.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
+        outputField.setForeground(new java.awt.Color(156, 145, 226));
         outputField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         outputField.setBorder(null);
         outputField.setPreferredSize(new java.awt.Dimension(64, 100));
@@ -103,6 +109,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         numOperandPanel.setLayout(new java.awt.BorderLayout());
 
+        numKeyPanel.setPreferredSize(new java.awt.Dimension(350, 464));
         numKeyPanel.setLayout(new java.awt.GridBagLayout());
 
         num1.setBackground(new java.awt.Color(80, 88, 181));
@@ -111,6 +118,8 @@ public class MainFrame extends javax.swing.JFrame {
         num1.setText("1");
         num1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num1.setFocusPainted(false);
+        num1.setMaximumSize(new java.awt.Dimension(300, 300));
+        num1.setPreferredSize(null);
         num1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 num1ActionPerformed(evt);
@@ -119,10 +128,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(2, 0, 0, 0);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(num1, gridBagConstraints);
 
         num2.setBackground(new java.awt.Color(80, 88, 181));
@@ -131,6 +142,7 @@ public class MainFrame extends javax.swing.JFrame {
         num2.setText("2");
         num2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num2.setFocusPainted(false);
+        num2.setPreferredSize(null);
         num2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 num2ActionPerformed(evt);
@@ -139,10 +151,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(2, 0, 0, 0);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(num2, gridBagConstraints);
 
         num3.setBackground(new java.awt.Color(80, 88, 181));
@@ -151,6 +165,7 @@ public class MainFrame extends javax.swing.JFrame {
         num3.setText("3");
         num3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num3.setFocusPainted(false);
+        num3.setPreferredSize(null);
         num3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 num3ActionPerformed(evt);
@@ -159,10 +174,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(2, 0, 0, 0);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(num3, gridBagConstraints);
 
         num4.setBackground(new java.awt.Color(80, 88, 181));
@@ -171,6 +188,7 @@ public class MainFrame extends javax.swing.JFrame {
         num4.setText("4");
         num4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num4.setFocusPainted(false);
+        num4.setPreferredSize(null);
         num4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 num4ActionPerformed(evt);
@@ -179,9 +197,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(num4, gridBagConstraints);
 
         num5.setBackground(new java.awt.Color(80, 88, 181));
@@ -190,6 +211,7 @@ public class MainFrame extends javax.swing.JFrame {
         num5.setText("5");
         num5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num5.setFocusPainted(false);
+        num5.setPreferredSize(null);
         num5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 num5ActionPerformed(evt);
@@ -198,9 +220,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(num5, gridBagConstraints);
 
         num6.setBackground(new java.awt.Color(80, 88, 181));
@@ -209,6 +234,7 @@ public class MainFrame extends javax.swing.JFrame {
         num6.setText("6");
         num6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num6.setFocusPainted(false);
+        num6.setPreferredSize(null);
         num6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 num6ActionPerformed(evt);
@@ -217,9 +243,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(num6, gridBagConstraints);
 
         num7.setBackground(new java.awt.Color(80, 88, 181));
@@ -228,6 +257,7 @@ public class MainFrame extends javax.swing.JFrame {
         num7.setText("7");
         num7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num7.setFocusPainted(false);
+        num7.setPreferredSize(null);
         num7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 num7ActionPerformed(evt);
@@ -236,9 +266,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(num7, gridBagConstraints);
 
         num8.setBackground(new java.awt.Color(80, 88, 181));
@@ -247,6 +280,7 @@ public class MainFrame extends javax.swing.JFrame {
         num8.setText("8");
         num8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num8.setFocusPainted(false);
+        num8.setPreferredSize(null);
         num8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 num8ActionPerformed(evt);
@@ -255,9 +289,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(num8, gridBagConstraints);
 
         num9.setBackground(new java.awt.Color(80, 88, 181));
@@ -266,6 +303,7 @@ public class MainFrame extends javax.swing.JFrame {
         num9.setText("9");
         num9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num9.setFocusPainted(false);
+        num9.setPreferredSize(null);
         num9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 num9ActionPerformed(evt);
@@ -274,9 +312,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(num9, gridBagConstraints);
 
         num0.setBackground(new java.awt.Color(80, 88, 181));
@@ -285,6 +326,7 @@ public class MainFrame extends javax.swing.JFrame {
         num0.setText("0");
         num0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num0.setFocusPainted(false);
+        num0.setPreferredSize(null);
         num0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 num0ActionPerformed(evt);
@@ -293,9 +335,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(num0, gridBagConstraints);
 
         decimalBtn.setBackground(new java.awt.Color(80, 88, 181));
@@ -304,6 +349,7 @@ public class MainFrame extends javax.swing.JFrame {
         decimalBtn.setText(".");
         decimalBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         decimalBtn.setFocusPainted(false);
+        decimalBtn.setPreferredSize(null);
         decimalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 decimalBtnActionPerformed(evt);
@@ -312,9 +358,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(decimalBtn, gridBagConstraints);
 
         backspaceBtn.setBackground(new java.awt.Color(80, 88, 181));
@@ -323,6 +372,7 @@ public class MainFrame extends javax.swing.JFrame {
         backspaceBtn.setText("CE");
         backspaceBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         backspaceBtn.setFocusPainted(false);
+        backspaceBtn.setPreferredSize(null);
         backspaceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backspaceBtnActionPerformed(evt);
@@ -331,9 +381,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 26;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(backspaceBtn, gridBagConstraints);
 
         clearBtn.setBackground(new java.awt.Color(80, 88, 181));
@@ -342,6 +395,7 @@ public class MainFrame extends javax.swing.JFrame {
         clearBtn.setText("AC");
         clearBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         clearBtn.setFocusPainted(false);
+        clearBtn.setPreferredSize(null);
         clearBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearBtnActionPerformed(evt);
@@ -350,10 +404,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 16;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 2, 0);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(clearBtn, gridBagConstraints);
 
         enterBtn.setBackground(new java.awt.Color(44, 51, 123));
@@ -363,6 +419,7 @@ public class MainFrame extends javax.swing.JFrame {
         enterBtn.setToolTipText("");
         enterBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         enterBtn.setFocusPainted(false);
+        enterBtn.setPreferredSize(null);
         enterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterBtnActionPerformed(evt);
@@ -372,11 +429,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 2, 0);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(enterBtn, gridBagConstraints);
 
         numOperandPanel.add(numKeyPanel, java.awt.BorderLayout.CENTER);
@@ -393,6 +451,11 @@ public class MainFrame extends javax.swing.JFrame {
         addBtn.setFocusPainted(false);
         addBtn.setMinimumSize(new java.awt.Dimension(10, 75));
         addBtn.setPreferredSize(new java.awt.Dimension(50, 75));
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
         operandKeyPanel.add(addBtn);
 
         subBtn.setBackground(new java.awt.Color(110, 80, 181));
@@ -403,6 +466,11 @@ public class MainFrame extends javax.swing.JFrame {
         subBtn.setFocusPainted(false);
         subBtn.setMinimumSize(null);
         subBtn.setPreferredSize(new java.awt.Dimension(5, 75));
+        subBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subBtnActionPerformed(evt);
+            }
+        });
         operandKeyPanel.add(subBtn);
 
         multBtn.setBackground(new java.awt.Color(110, 80, 181));
@@ -413,6 +481,11 @@ public class MainFrame extends javax.swing.JFrame {
         multBtn.setFocusPainted(false);
         multBtn.setMinimumSize(null);
         multBtn.setPreferredSize(new java.awt.Dimension(5, 75));
+        multBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multBtnActionPerformed(evt);
+            }
+        });
         operandKeyPanel.add(multBtn);
 
         divBtn.setBackground(new java.awt.Color(110, 80, 181));
@@ -423,6 +496,11 @@ public class MainFrame extends javax.swing.JFrame {
         divBtn.setFocusPainted(false);
         divBtn.setMinimumSize(null);
         divBtn.setPreferredSize(new java.awt.Dimension(5, 75));
+        divBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                divBtnActionPerformed(evt);
+            }
+        });
         operandKeyPanel.add(divBtn);
 
         percentBtn.setBackground(new java.awt.Color(110, 80, 181));
@@ -433,6 +511,11 @@ public class MainFrame extends javax.swing.JFrame {
         percentBtn.setFocusPainted(false);
         percentBtn.setMinimumSize(null);
         percentBtn.setPreferredSize(new java.awt.Dimension(5, 75));
+        percentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                percentBtnActionPerformed(evt);
+            }
+        });
         operandKeyPanel.add(percentBtn);
 
         numOperandPanel.add(operandKeyPanel, java.awt.BorderLayout.EAST);
@@ -446,72 +529,119 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void num1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num1ActionPerformed
         // TODO add your handling code here:
-        controller.addToExpression("1");
+        String output = controller.addToExpression("1");
+        addToOutputPanel(output);
     }//GEN-LAST:event_num1ActionPerformed
 
     private void num2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num2ActionPerformed
         // TODO add your handling code here:
-        controller.addToExpression("2");
+        String output = controller.addToExpression("2");
+        addToOutputPanel(output);
     }//GEN-LAST:event_num2ActionPerformed
 
     private void num3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num3ActionPerformed
         // TODO add your handling code here:
-        controller.addToExpression("3");
+        String output = controller.addToExpression("3");
+        addToOutputPanel(output);
     }//GEN-LAST:event_num3ActionPerformed
 
     private void num4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num4ActionPerformed
         // TODO add your handling code here:
-        controller.addToExpression("4");
+        String output = controller.addToExpression("4");
+        addToOutputPanel(output);
     }//GEN-LAST:event_num4ActionPerformed
 
     private void num5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num5ActionPerformed
         // TODO add your handling code here:
-        controller.addToExpression("5");
+        String output = controller.addToExpression("5");
+        addToOutputPanel(output);
     }//GEN-LAST:event_num5ActionPerformed
 
     private void num6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num6ActionPerformed
         // TODO add your handling code here:
-        controller.addToExpression("6");
+        String output = controller.addToExpression("6");
+        addToOutputPanel(output);
     }//GEN-LAST:event_num6ActionPerformed
 
     private void num7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num7ActionPerformed
         // TODO add your handling code here:
-        controller.addToExpression("7");
+        String output = controller.addToExpression("7");
+        addToOutputPanel(output);
     }//GEN-LAST:event_num7ActionPerformed
 
     private void num8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num8ActionPerformed
         // TODO add your handling code here:
-        controller.addToExpression("8");
+        String output = controller.addToExpression("8");
+        addToOutputPanel(output);
     }//GEN-LAST:event_num8ActionPerformed
 
     private void num9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num9ActionPerformed
         // TODO add your handling code here:
-        controller.addToExpression("9");
+        String output = controller.addToExpression("9");
+        addToOutputPanel(output);
     }//GEN-LAST:event_num9ActionPerformed
 
     private void num0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num0ActionPerformed
         // TODO add your handling code here:
-        controller.addToExpression("0");
+        String output = controller.addToExpression("0");
+        addToOutputPanel(output);
     }//GEN-LAST:event_num0ActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         // TODO add your handling code here:
         //add function to clear list of strings
+        controller.clearExpression();
+        outputField.setText("");
     }//GEN-LAST:event_clearBtnActionPerformed
-
-    private void enterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterBtnActionPerformed
-        // TODO add your handling code here:
-        
-        //call function that computes the expression
-    }//GEN-LAST:event_enterBtnActionPerformed
 
     private void decimalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decimalBtnActionPerformed
         // TODO add your handling code here:
+        String output = controller.addToExpression(".");
+        addToOutputPanel(output);
     }//GEN-LAST:event_decimalBtnActionPerformed
 
     private void backspaceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backspaceBtnActionPerformed
         // TODO add your handling code here:
+        controller.deleteLastCharacter();
+        outputField.setText(outputField.getText().replaceAll(".$", ""));
     }//GEN-LAST:event_backspaceBtnActionPerformed
+
+    private void enterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterBtnActionPerformed
+        // TODO add your handling code here:
+        //call function that computes the expression
+        double exprOutput = controller.computeExpression();
+        outputField.setText(Double.toString(exprOutput));
+    }//GEN-LAST:event_enterBtnActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // TODO add your handling code here:
+        String output = controller.addToExpression("+");
+        addToOutputPanel(output);
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void subBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subBtnActionPerformed
+        // TODO add your handling code here:
+        String output = controller.addToExpression("-");
+        addToOutputPanel(output);
+    }//GEN-LAST:event_subBtnActionPerformed
+
+    private void multBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multBtnActionPerformed
+        // TODO add your handling code here:
+        String output = controller.addToExpression("*");
+        addToOutputPanel(output);
+    }//GEN-LAST:event_multBtnActionPerformed
+
+    private void divBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divBtnActionPerformed
+        // TODO add your handling code here:
+        String output = controller.addToExpression("/");
+        addToOutputPanel(output);
+    }//GEN-LAST:event_divBtnActionPerformed
+
+    private void percentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percentBtnActionPerformed
+        // TODO add your handling code here:
+        //controller.addToExpression("%");
+        //addToOutputPanel("%");
+    }//GEN-LAST:event_percentBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -575,4 +705,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton percentBtn;
     private javax.swing.JButton subBtn;
     // End of variables declaration//GEN-END:variables
+
+    //controller class init
+    CalcController controller = new CalcController();
 }
