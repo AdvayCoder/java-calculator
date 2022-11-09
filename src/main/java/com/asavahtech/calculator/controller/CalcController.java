@@ -16,6 +16,8 @@ public class CalcController {
     ArrayList<String> calcExpression = new ArrayList<String>();
     String tempNum = "";  //store the number here before a non-num btn is clicked`
     
+    double currentOutput = 0.0;
+    
     public CalcController() {
         
     }
@@ -25,8 +27,6 @@ public class CalcController {
             if(!tempNum.equals("")) {
                 calcExpression.add(tempNum);
             }
-            
-            System.out.println(fragment);
             
             String prevTerm = "";
             
@@ -60,8 +60,6 @@ public class CalcController {
     public void clearExpression() {
         calcExpression.clear();
         tempNum = "";
-        
-        System.out.println(calcExpression);
     }
     
     public void deleteLastCharacter() {
@@ -100,10 +98,20 @@ public class CalcController {
         
         double finalOutput = parseExpression();
         
+        //task 1
+        //add code to round output returned as double to 7 digits
+        
+        //task 2
+        //if the output modulo 2 is 1 or 0 then remove the ".0" at the end of the output
+        //eg. In 5.0, the ".0" should be removed
+        //The opearator for modulo is "%"
+        //eg. 5 % 2 = 1 (because the remainder of the division of 5 and 2 is 1)
+        
         clearExpression();
         
+        currentOutput = finalOutput;
+        
         calcExpression.add(Double.toString(finalOutput));
-            System.out.println(calcExpression);
         
         return finalOutput;
     }
@@ -119,10 +127,6 @@ public class CalcController {
             if(calcExpression.get(i).equals("*")) {
                 double prevNum = Double.parseDouble(calcExpression.get(i - 1));
                 double nextNum = Double.parseDouble(calcExpression.get(i + 1));
-                
-                System.out.println(prevNum);
-                        System.out.println(nextNum);
-                
                 
                 String sign = (i - 2) > -1 ? calcExpression.get(i - 2) : "";
                 
@@ -151,9 +155,6 @@ public class CalcController {
             
             firstParse.add(calcExpression.get(i)); 
         }
-        
-        System.out.println("first parse");
-                        System.out.println(firstParse);
         
         //,then for dividing
         for (int i = 0; i < firstParse.size(); i++) {
@@ -201,22 +202,16 @@ public class CalcController {
             }
         }
         
-        
-        
-            System.out.println("second parse");
-                        System.out.println(secondParse);
-        
         //for the final output
         for(String num : secondParse) {
             System.out.println(num);
             finalOutput += (Double.parseDouble(num));
-        }        
-        
-      
-           System.out.println("final output");
-                        System.out.println(finalOutput);
+        }  
         
         return finalOutput;
     }
+    
+    
+    
 }
 
