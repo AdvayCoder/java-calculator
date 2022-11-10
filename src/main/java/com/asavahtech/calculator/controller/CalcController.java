@@ -212,6 +212,8 @@ public class CalcController {
     }
     
     
-    
+    public double getCurrentOutput() {
+        return currentOutput;
+    }
 }
 

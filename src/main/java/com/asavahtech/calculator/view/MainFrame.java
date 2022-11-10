@@ -64,6 +64,10 @@ public class MainFrame extends javax.swing.JFrame {
         calcPanel = new javax.swing.JPanel();
         outputPanel = new javax.swing.JPanel();
         outputField = new javax.swing.JTextField();
+        memoryPanel = new javax.swing.JPanel();
+        memoryDropdown = new javax.swing.JComboBox<>();
+        memoryAddBtn = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         numOperandPanel = new javax.swing.JPanel();
         numKeyPanel = new javax.swing.JPanel();
         num1 = new javax.swing.JButton();
@@ -94,6 +98,7 @@ public class MainFrame extends javax.swing.JFrame {
         calcPanel.setForeground(new java.awt.Color(56, 44, 187));
         calcPanel.setLayout(new java.awt.BorderLayout());
 
+        outputPanel.setPreferredSize(new java.awt.Dimension(64, 150));
         outputPanel.setLayout(new java.awt.BorderLayout());
 
         outputField.setEditable(false);
@@ -104,6 +109,51 @@ public class MainFrame extends javax.swing.JFrame {
         outputField.setBorder(null);
         outputField.setPreferredSize(new java.awt.Dimension(64, 100));
         outputPanel.add(outputField, java.awt.BorderLayout.CENTER);
+
+        memoryPanel.setPreferredSize(new java.awt.Dimension(100, 10));
+        memoryPanel.setLayout(new java.awt.BorderLayout());
+
+        memoryDropdown.setBackground(new java.awt.Color(50, 31, 171));
+        memoryDropdown.setFont(new java.awt.Font("Poppins ExtraBold", 0, 12)); // NOI18N
+        memoryDropdown.setForeground(new java.awt.Color(156, 145, 226));
+        memoryDropdown.setMaximumRowCount(5);
+        memoryDropdown.setBorder(null);
+        memoryDropdown.setLightWeightPopupEnabled(false);
+        memoryDropdown.setName(""); // NOI18N
+        memoryDropdown.setPreferredSize(new java.awt.Dimension(72, 60));
+        memoryDropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                memoryDropdownActionPerformed(evt);
+            }
+        });
+        memoryPanel.add(memoryDropdown, java.awt.BorderLayout.SOUTH);
+
+        memoryAddBtn.setBackground(new java.awt.Color(50, 31, 171));
+        memoryAddBtn.setFont(new java.awt.Font("Poppins ExtraBold", 0, 22)); // NOI18N
+        memoryAddBtn.setForeground(new java.awt.Color(156, 145, 226));
+        memoryAddBtn.setText("+");
+        memoryAddBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        memoryAddBtn.setFocusPainted(false);
+        memoryAddBtn.setFocusable(false);
+        memoryAddBtn.setPreferredSize(new java.awt.Dimension(122, 50));
+        memoryAddBtn.setVerifyInputWhenFocusTarget(false);
+        memoryAddBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                memoryAddBtnActionPerformed(evt);
+            }
+        });
+        memoryPanel.add(memoryAddBtn, java.awt.BorderLayout.CENTER);
+
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(50, 31, 171));
+        jTextField1.setFont(new java.awt.Font("Poppins ExtraBold", 0, 19)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(156, 145, 226));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("Memory");
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        memoryPanel.add(jTextField1, java.awt.BorderLayout.PAGE_START);
+
+        outputPanel.add(memoryPanel, java.awt.BorderLayout.WEST);
 
         calcPanel.add(outputPanel, java.awt.BorderLayout.NORTH);
 
@@ -643,6 +693,20 @@ public class MainFrame extends javax.swing.JFrame {
         //addToOutputPanel("%");
     }//GEN-LAST:event_percentBtnActionPerformed
 
+    private void memoryAddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryAddBtnActionPerformed
+        // TODO add your handling code here:
+        double currentOutput = controller.getCurrentOutput();
+        if(currentOutput == 0.0) {
+            return;
+        }
+
+        memoryDropdown.addItem(Double.toString(currentOutput));
+    }//GEN-LAST:event_memoryAddBtnActionPerformed
+
+    private void memoryDropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryDropdownActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_memoryDropdownActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -686,6 +750,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton decimalBtn;
     private javax.swing.JButton divBtn;
     private javax.swing.JButton enterBtn;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton memoryAddBtn;
+    private javax.swing.JComboBox<String> memoryDropdown;
+    private javax.swing.JPanel memoryPanel;
     private javax.swing.JButton multBtn;
     private javax.swing.JButton num0;
     private javax.swing.JButton num1;
