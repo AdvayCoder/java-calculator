@@ -64,10 +64,6 @@ public class MainFrame extends javax.swing.JFrame {
         calcPanel = new javax.swing.JPanel();
         outputPanel = new javax.swing.JPanel();
         outputField = new javax.swing.JTextField();
-        memoryPanel = new javax.swing.JPanel();
-        memoryDropdown = new javax.swing.JComboBox<>();
-        memoryAddBtn = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         numOperandPanel = new javax.swing.JPanel();
         numKeyPanel = new javax.swing.JPanel();
         num1 = new javax.swing.JButton();
@@ -82,6 +78,9 @@ public class MainFrame extends javax.swing.JFrame {
         num0 = new javax.swing.JButton();
         decimalBtn = new javax.swing.JButton();
         backspaceBtn = new javax.swing.JButton();
+        memoryAdd = new javax.swing.JButton();
+        memoryMinus = new javax.swing.JButton();
+        memoryRecall = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
         enterBtn = new javax.swing.JButton();
         operandKeyPanel = new javax.swing.JPanel();
@@ -89,71 +88,27 @@ public class MainFrame extends javax.swing.JFrame {
         subBtn = new javax.swing.JButton();
         multBtn = new javax.swing.JButton();
         divBtn = new javax.swing.JButton();
-        percentBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(39, 149, 3));
         setPreferredSize(new java.awt.Dimension(166, 500));
 
         calcPanel.setBackground(new java.awt.Color(56, 44, 187));
         calcPanel.setForeground(new java.awt.Color(56, 44, 187));
         calcPanel.setLayout(new java.awt.BorderLayout());
 
-        outputPanel.setPreferredSize(new java.awt.Dimension(64, 150));
+        outputPanel.setPreferredSize(new java.awt.Dimension(64, 120));
         outputPanel.setLayout(new java.awt.BorderLayout());
 
         outputField.setEditable(false);
         outputField.setBackground(new java.awt.Color(50, 31, 171));
         outputField.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        outputField.setForeground(new java.awt.Color(156, 145, 226));
+        outputField.setForeground(new java.awt.Color(225, 204, 255));
         outputField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         outputField.setBorder(null);
-        outputField.setPreferredSize(new java.awt.Dimension(64, 100));
+        outputField.setMinimumSize(new java.awt.Dimension(64, 65));
+        outputField.setPreferredSize(new java.awt.Dimension(64, 120));
         outputPanel.add(outputField, java.awt.BorderLayout.CENTER);
-
-        memoryPanel.setPreferredSize(new java.awt.Dimension(100, 10));
-        memoryPanel.setLayout(new java.awt.BorderLayout());
-
-        memoryDropdown.setBackground(new java.awt.Color(50, 31, 171));
-        memoryDropdown.setFont(new java.awt.Font("Poppins ExtraBold", 0, 12)); // NOI18N
-        memoryDropdown.setForeground(new java.awt.Color(156, 145, 226));
-        memoryDropdown.setMaximumRowCount(5);
-        memoryDropdown.setBorder(null);
-        memoryDropdown.setLightWeightPopupEnabled(false);
-        memoryDropdown.setName(""); // NOI18N
-        memoryDropdown.setPreferredSize(new java.awt.Dimension(72, 60));
-        memoryDropdown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                memoryDropdownActionPerformed(evt);
-            }
-        });
-        memoryPanel.add(memoryDropdown, java.awt.BorderLayout.SOUTH);
-
-        memoryAddBtn.setBackground(new java.awt.Color(50, 31, 171));
-        memoryAddBtn.setFont(new java.awt.Font("Poppins ExtraBold", 0, 22)); // NOI18N
-        memoryAddBtn.setForeground(new java.awt.Color(156, 145, 226));
-        memoryAddBtn.setText("+");
-        memoryAddBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        memoryAddBtn.setFocusPainted(false);
-        memoryAddBtn.setFocusable(false);
-        memoryAddBtn.setPreferredSize(new java.awt.Dimension(122, 50));
-        memoryAddBtn.setVerifyInputWhenFocusTarget(false);
-        memoryAddBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                memoryAddBtnActionPerformed(evt);
-            }
-        });
-        memoryPanel.add(memoryAddBtn, java.awt.BorderLayout.CENTER);
-
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(50, 31, 171));
-        jTextField1.setFont(new java.awt.Font("Poppins ExtraBold", 0, 19)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(156, 145, 226));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Memory");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        memoryPanel.add(jTextField1, java.awt.BorderLayout.PAGE_START);
-
-        outputPanel.add(memoryPanel, java.awt.BorderLayout.WEST);
 
         calcPanel.add(outputPanel, java.awt.BorderLayout.NORTH);
 
@@ -164,11 +119,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         num1.setBackground(new java.awt.Color(80, 88, 181));
         num1.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        num1.setForeground(new java.awt.Color(183, 148, 230));
+        num1.setForeground(new java.awt.Color(225, 204, 255));
         num1.setText("1");
         num1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num1.setFocusPainted(false);
-        num1.setMaximumSize(new java.awt.Dimension(300, 300));
+        num1.setMaximumSize(new java.awt.Dimension(64, 100));
+        num1.setMinimumSize(new java.awt.Dimension(64, 35));
         num1.setPreferredSize(null);
         num1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,10 +144,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         num2.setBackground(new java.awt.Color(80, 88, 181));
         num2.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        num2.setForeground(new java.awt.Color(183, 148, 230));
+        num2.setForeground(new java.awt.Color(225, 204, 255));
         num2.setText("2");
         num2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num2.setFocusPainted(false);
+        num2.setMaximumSize(new java.awt.Dimension(64, 100));
+        num2.setMinimumSize(new java.awt.Dimension(64, 35));
         num2.setPreferredSize(null);
         num2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,10 +169,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         num3.setBackground(new java.awt.Color(80, 88, 181));
         num3.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        num3.setForeground(new java.awt.Color(183, 148, 230));
+        num3.setForeground(new java.awt.Color(225, 204, 255));
         num3.setText("3");
         num3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num3.setFocusPainted(false);
+        num3.setMaximumSize(new java.awt.Dimension(64, 100));
+        num3.setMinimumSize(new java.awt.Dimension(64, 35));
         num3.setPreferredSize(null);
         num3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,10 +194,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         num4.setBackground(new java.awt.Color(80, 88, 181));
         num4.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        num4.setForeground(new java.awt.Color(183, 148, 230));
+        num4.setForeground(new java.awt.Color(225, 204, 255));
         num4.setText("4");
         num4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num4.setFocusPainted(false);
+        num4.setMaximumSize(new java.awt.Dimension(64, 100));
+        num4.setMinimumSize(new java.awt.Dimension(64, 35));
         num4.setPreferredSize(null);
         num4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,10 +219,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         num5.setBackground(new java.awt.Color(80, 88, 181));
         num5.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        num5.setForeground(new java.awt.Color(183, 148, 230));
+        num5.setForeground(new java.awt.Color(225, 204, 255));
         num5.setText("5");
         num5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num5.setFocusPainted(false);
+        num5.setMaximumSize(new java.awt.Dimension(64, 100));
+        num5.setMinimumSize(new java.awt.Dimension(64, 35));
         num5.setPreferredSize(null);
         num5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,10 +244,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         num6.setBackground(new java.awt.Color(80, 88, 181));
         num6.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        num6.setForeground(new java.awt.Color(183, 148, 230));
+        num6.setForeground(new java.awt.Color(225, 204, 255));
         num6.setText("6");
         num6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num6.setFocusPainted(false);
+        num6.setMaximumSize(new java.awt.Dimension(64, 100));
+        num6.setMinimumSize(new java.awt.Dimension(64, 35));
         num6.setPreferredSize(null);
         num6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -303,10 +269,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         num7.setBackground(new java.awt.Color(80, 88, 181));
         num7.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        num7.setForeground(new java.awt.Color(183, 148, 230));
+        num7.setForeground(new java.awt.Color(225, 204, 255));
         num7.setText("7");
         num7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num7.setFocusPainted(false);
+        num7.setMaximumSize(new java.awt.Dimension(64, 100));
+        num7.setMinimumSize(new java.awt.Dimension(64, 35));
         num7.setPreferredSize(null);
         num7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -326,10 +294,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         num8.setBackground(new java.awt.Color(80, 88, 181));
         num8.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        num8.setForeground(new java.awt.Color(183, 148, 230));
+        num8.setForeground(new java.awt.Color(225, 204, 255));
         num8.setText("8");
         num8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num8.setFocusPainted(false);
+        num8.setMaximumSize(new java.awt.Dimension(64, 100));
+        num8.setMinimumSize(new java.awt.Dimension(64, 35));
         num8.setPreferredSize(null);
         num8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -349,10 +319,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         num9.setBackground(new java.awt.Color(80, 88, 181));
         num9.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        num9.setForeground(new java.awt.Color(183, 148, 230));
+        num9.setForeground(new java.awt.Color(225, 204, 255));
         num9.setText("9");
         num9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num9.setFocusPainted(false);
+        num9.setMaximumSize(new java.awt.Dimension(64, 100));
+        num9.setMinimumSize(new java.awt.Dimension(64, 35));
         num9.setPreferredSize(null);
         num9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -372,10 +344,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         num0.setBackground(new java.awt.Color(80, 88, 181));
         num0.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        num0.setForeground(new java.awt.Color(183, 148, 230));
+        num0.setForeground(new java.awt.Color(225, 204, 255));
         num0.setText("0");
         num0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         num0.setFocusPainted(false);
+        num0.setMaximumSize(new java.awt.Dimension(64, 100));
+        num0.setMinimumSize(new java.awt.Dimension(64, 35));
         num0.setPreferredSize(null);
         num0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -395,10 +369,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         decimalBtn.setBackground(new java.awt.Color(80, 88, 181));
         decimalBtn.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        decimalBtn.setForeground(new java.awt.Color(183, 148, 230));
+        decimalBtn.setForeground(new java.awt.Color(225, 204, 255));
         decimalBtn.setText(".");
         decimalBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         decimalBtn.setFocusPainted(false);
+        decimalBtn.setMaximumSize(new java.awt.Dimension(64, 100));
+        decimalBtn.setMinimumSize(new java.awt.Dimension(64, 35));
         decimalBtn.setPreferredSize(null);
         decimalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -418,11 +394,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         backspaceBtn.setBackground(new java.awt.Color(80, 88, 181));
         backspaceBtn.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        backspaceBtn.setForeground(new java.awt.Color(183, 148, 230));
+        backspaceBtn.setForeground(new java.awt.Color(225, 204, 255));
         backspaceBtn.setText("CE");
         backspaceBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         backspaceBtn.setFocusPainted(false);
-        backspaceBtn.setPreferredSize(null);
+        backspaceBtn.setMaximumSize(new java.awt.Dimension(64, 100));
+        backspaceBtn.setMinimumSize(new java.awt.Dimension(64, 35));
+        backspaceBtn.setPreferredSize(new java.awt.Dimension(64, 65));
         backspaceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backspaceBtnActionPerformed(evt);
@@ -439,12 +417,86 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         numKeyPanel.add(backspaceBtn, gridBagConstraints);
 
+        memoryAdd.setBackground(new java.awt.Color(142, 62, 164));
+        memoryAdd.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
+        memoryAdd.setForeground(new java.awt.Color(225, 204, 255));
+        memoryAdd.setText("M+");
+        memoryAdd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
+        memoryAdd.setFocusPainted(false);
+        memoryAdd.setMaximumSize(new java.awt.Dimension(64, 100));
+        memoryAdd.setMinimumSize(new java.awt.Dimension(64, 35));
+        memoryAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                memoryAddActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 26;
+        gridBagConstraints.ipady = 17;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        numKeyPanel.add(memoryAdd, gridBagConstraints);
+
+        memoryMinus.setBackground(new java.awt.Color(142, 62, 164));
+        memoryMinus.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
+        memoryMinus.setForeground(new java.awt.Color(225, 204, 255));
+        memoryMinus.setText("M-");
+        memoryMinus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
+        memoryMinus.setFocusPainted(false);
+        memoryMinus.setMaximumSize(new java.awt.Dimension(64, 100));
+        memoryMinus.setMinimumSize(new java.awt.Dimension(64, 35));
+        memoryMinus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                memoryMinusActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 26;
+        gridBagConstraints.ipady = 17;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        numKeyPanel.add(memoryMinus, gridBagConstraints);
+
+        memoryRecall.setBackground(new java.awt.Color(142, 62, 164));
+        memoryRecall.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
+        memoryRecall.setForeground(new java.awt.Color(225, 204, 255));
+        memoryRecall.setText("MR");
+        memoryRecall.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
+        memoryRecall.setFocusPainted(false);
+        memoryRecall.setMaximumSize(new java.awt.Dimension(64, 100));
+        memoryRecall.setMinimumSize(new java.awt.Dimension(64, 35));
+        memoryRecall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                memoryRecallActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 26;
+        gridBagConstraints.ipady = 17;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        numKeyPanel.add(memoryRecall, gridBagConstraints);
+
         clearBtn.setBackground(new java.awt.Color(80, 88, 181));
         clearBtn.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        clearBtn.setForeground(new java.awt.Color(183, 148, 230));
+        clearBtn.setForeground(new java.awt.Color(225, 204, 255));
         clearBtn.setText("AC");
         clearBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         clearBtn.setFocusPainted(false);
+        clearBtn.setMaximumSize(new java.awt.Dimension(64, 100));
+        clearBtn.setMinimumSize(new java.awt.Dimension(64, 35));
         clearBtn.setPreferredSize(null);
         clearBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -464,11 +516,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         enterBtn.setBackground(new java.awt.Color(44, 51, 123));
         enterBtn.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        enterBtn.setForeground(new java.awt.Color(142, 149, 220));
+        enterBtn.setForeground(new java.awt.Color(204, 204, 255));
         enterBtn.setText("=");
         enterBtn.setToolTipText("");
         enterBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(11, 2, 24)));
         enterBtn.setFocusPainted(false);
+        enterBtn.setMaximumSize(new java.awt.Dimension(64, 100));
+        enterBtn.setMinimumSize(new java.awt.Dimension(64, 35));
         enterBtn.setPreferredSize(null);
         enterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -491,11 +545,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         operandKeyPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         operandKeyPanel.setPreferredSize(new java.awt.Dimension(110, 300));
-        operandKeyPanel.setLayout(new java.awt.GridLayout(5, 1));
+        operandKeyPanel.setLayout(new java.awt.GridLayout(4, 1));
 
         addBtn.setBackground(new java.awt.Color(110, 80, 181));
         addBtn.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        addBtn.setForeground(new java.awt.Color(194, 164, 206));
+        addBtn.setForeground(new java.awt.Color(242, 236, 255));
         addBtn.setText("+");
         addBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         addBtn.setFocusPainted(false);
@@ -510,7 +564,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         subBtn.setBackground(new java.awt.Color(110, 80, 181));
         subBtn.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        subBtn.setForeground(new java.awt.Color(194, 164, 206));
+        subBtn.setForeground(new java.awt.Color(242, 236, 255));
         subBtn.setText("-");
         subBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         subBtn.setFocusPainted(false);
@@ -525,7 +579,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         multBtn.setBackground(new java.awt.Color(110, 80, 181));
         multBtn.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        multBtn.setForeground(new java.awt.Color(194, 164, 206));
+        multBtn.setForeground(new java.awt.Color(242, 236, 255));
         multBtn.setText("×");
         multBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         multBtn.setFocusPainted(false);
@@ -540,7 +594,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         divBtn.setBackground(new java.awt.Color(110, 80, 181));
         divBtn.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        divBtn.setForeground(new java.awt.Color(194, 164, 206));
+        divBtn.setForeground(new java.awt.Color(242, 236, 255));
         divBtn.setText("÷");
         divBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         divBtn.setFocusPainted(false);
@@ -552,21 +606,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         operandKeyPanel.add(divBtn);
-
-        percentBtn.setBackground(new java.awt.Color(110, 80, 181));
-        percentBtn.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
-        percentBtn.setForeground(new java.awt.Color(194, 164, 206));
-        percentBtn.setText("%");
-        percentBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        percentBtn.setFocusPainted(false);
-        percentBtn.setMinimumSize(null);
-        percentBtn.setPreferredSize(new java.awt.Dimension(5, 75));
-        percentBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                percentBtnActionPerformed(evt);
-            }
-        });
-        operandKeyPanel.add(percentBtn);
 
         numOperandPanel.add(operandKeyPanel, java.awt.BorderLayout.EAST);
 
@@ -687,25 +726,18 @@ public class MainFrame extends javax.swing.JFrame {
         addToOutputPanel(output);
     }//GEN-LAST:event_divBtnActionPerformed
 
-    private void percentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percentBtnActionPerformed
+    private void memoryAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryAddActionPerformed
         // TODO add your handling code here:
-        //controller.addToExpression("%");
-        //addToOutputPanel("%");
-    }//GEN-LAST:event_percentBtnActionPerformed
+        
+    }//GEN-LAST:event_memoryAddActionPerformed
 
-    private void memoryAddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryAddBtnActionPerformed
+    private void memoryMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryMinusActionPerformed
         // TODO add your handling code here:
-        double currentOutput = controller.getCurrentOutput();
-        if(currentOutput == 0.0) {
-            return;
-        }
+    }//GEN-LAST:event_memoryMinusActionPerformed
 
-        memoryDropdown.addItem(Double.toString(currentOutput));
-    }//GEN-LAST:event_memoryAddBtnActionPerformed
-
-    private void memoryDropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryDropdownActionPerformed
+    private void memoryRecallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryRecallActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_memoryDropdownActionPerformed
+    }//GEN-LAST:event_memoryRecallActionPerformed
 
     /**
      * @param args the command line arguments
@@ -750,10 +782,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton decimalBtn;
     private javax.swing.JButton divBtn;
     private javax.swing.JButton enterBtn;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton memoryAddBtn;
-    private javax.swing.JComboBox<String> memoryDropdown;
-    private javax.swing.JPanel memoryPanel;
+    private javax.swing.JButton memoryAdd;
+    private javax.swing.JButton memoryMinus;
+    private javax.swing.JButton memoryRecall;
     private javax.swing.JButton multBtn;
     private javax.swing.JButton num0;
     private javax.swing.JButton num1;
@@ -770,7 +801,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel operandKeyPanel;
     private javax.swing.JTextField outputField;
     private javax.swing.JPanel outputPanel;
-    private javax.swing.JButton percentBtn;
     private javax.swing.JButton subBtn;
     // End of variables declaration//GEN-END:variables
 
