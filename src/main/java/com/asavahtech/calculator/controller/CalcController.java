@@ -17,30 +17,27 @@ public class CalcController {
     String tempNum = "";  //store the number here before a non-num btn is clicked`
     
     double currentOutput = 0.0;
+    double memNum = 0.0;
     
     public CalcController() {
         
     }
     
     public String addToExpression(String fragment) {
+        
+        
         if(fragment.equals("+") || fragment.equals("-") || fragment.equals("*") || fragment.equals("/") || fragment.equals("%")) {
             if(!tempNum.equals("")) {
                 calcExpression.add(tempNum);
             }
             
-            String prevTerm = "";
-            
-            //get previous term
-            if(calcExpression.size() - 1 > -1) {
-                prevTerm = calcExpression.get(calcExpression.size() - 1);
-            }
+            String prevTerm = getPrevTerm();
             
             if(prevTerm.equals("+") || prevTerm.equals("-") || prevTerm.equals("*") || prevTerm.equals("/")) {
                 return "";
             }
             
             calcExpression.add(fragment);
-            System.out.println(calcExpression);
             tempNum = ""; //clear temp num
             
             if(fragment.equals("*")) {
@@ -52,6 +49,14 @@ public class CalcController {
             
             return fragment; //stop method from proceding further
         }        
+        
+        String prevTerm = calcExpression.size() - 1 > -1 ? calcExpression.get(calcExpression.size() - 1) : "+";
+        
+        if(isNumeric(prevTerm)) {
+            calcExpression.clear();
+            tempNum += fragment;
+            return fragment;
+        }
         
         tempNum += fragment;
         return fragment;
@@ -88,7 +93,6 @@ public class CalcController {
         //remove last character of string
         calcExpression.set(index, previousElement.replaceAll(".$", ""));
         
-        System.out.println(calcExpression);
     }
     
     public double computeExpression() {
@@ -96,16 +100,14 @@ public class CalcController {
             calcExpression.add(tempNum);
         }
         
+        String prevTerm = calcExpression.size() - 1 > -1 ? calcExpression.get(calcExpression.size() - 1) : "";
+        
+        if(prevTerm.equals("+") || prevTerm.equals("-") || prevTerm.equals("*") || prevTerm.equals("/"))
+        {
+            return 0.0;
+        }        
+        
         double finalOutput = parseExpression();
-        
-        //task 1
-        //add code to round output returned as double to 7 digits
-        
-        //task 2
-        //if the output modulo 2 is 1 or 0 then remove the ".0" at the end of the output
-        //eg. In 5.0, the ".0" should be removed
-        //The opearator for modulo is "%"
-        //eg. 5 % 2 = 1 (because the remainder of the division of 5 and 2 is 1)
         
         clearExpression();
         
@@ -136,8 +138,6 @@ public class CalcController {
                     multipliedTerm = -(multipliedTerm);
                 }
                 
-                System.out.println(multipliedTerm);
-                
                 firstParse.remove(firstParse.size() - 1); //remove element before multiplication symbol
                 
                 //to remove the 'add' or 'subtract' symbols, so that it is easier to calculate in a later step
@@ -153,7 +153,7 @@ public class CalcController {
                 continue;
             }
             
-            firstParse.add(calcExpression.get(i)); 
+            firstParse.add(calcExpression.get(i));
         }
         
         //,then for dividing
@@ -204,7 +204,6 @@ public class CalcController {
         
         //for the final output
         for(String num : secondParse) {
-            System.out.println(num);
             finalOutput += (Double.parseDouble(num));
         }  
         
@@ -212,8 +211,54 @@ public class CalcController {
     }
     
     
-    public double getCurrentOutput() {
-        return currentOutput;
+    public void setMemNum() {
+        memNum = currentOutput;
+    }
+    
+    public void deleteMemNum() {
+        memNum = 0;
+    }
+    
+    public String addMemToExpression() {
+        //if(fragment.equals("+") || fragment.equals("-") || fragment.equals("*") || fragment.equals("/") || fragment.equals("%")) {
+        
+        //}
+        
+        if(memNum == 0.0) {
+            return "";
+        }
+        
+        if(!tempNum.equals("")) {
+            return "";
+        }
+    
+    
+        addToExpression(Double.toString(memNum));
+        return Double.toString(memNum);
+    }
+    
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public String getPrevTerm() {
+        String prevTerm = calcExpression.size() - 1 > -1 ? calcExpression.get(calcExpression.size() - 1) : "";
+        return prevTerm;
+    }
+    
+    public boolean isPrevTermNumber() {
+        String prevTerm = getPrevTerm();
+        boolean isNum = isNumeric(prevTerm);
+        return isNum;
     }
 }
 

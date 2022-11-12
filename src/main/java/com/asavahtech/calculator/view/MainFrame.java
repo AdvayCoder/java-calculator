@@ -90,6 +90,7 @@ public class MainFrame extends javax.swing.JFrame {
         divBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Calculator Jam");
         setBackground(new java.awt.Color(39, 149, 3));
         setPreferredSize(new java.awt.Dimension(166, 500));
 
@@ -618,60 +619,90 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void num1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num1ActionPerformed
         // TODO add your handling code here:
+        if(controller.isPrevTermNumber()) {
+            outputField.setText("");
+        }
         String output = controller.addToExpression("1");
         addToOutputPanel(output);
     }//GEN-LAST:event_num1ActionPerformed
 
     private void num2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num2ActionPerformed
         // TODO add your handling code here:
+        if(controller.isPrevTermNumber()) {
+            outputField.setText("");
+        }
         String output = controller.addToExpression("2");
         addToOutputPanel(output);
     }//GEN-LAST:event_num2ActionPerformed
 
     private void num3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num3ActionPerformed
         // TODO add your handling code here:
+        if(controller.isPrevTermNumber()) {
+            outputField.setText("");
+        }
         String output = controller.addToExpression("3");
         addToOutputPanel(output);
     }//GEN-LAST:event_num3ActionPerformed
 
     private void num4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num4ActionPerformed
         // TODO add your handling code here:
+        if(controller.isPrevTermNumber()) {
+            outputField.setText("");
+        }
         String output = controller.addToExpression("4");
         addToOutputPanel(output);
     }//GEN-LAST:event_num4ActionPerformed
 
     private void num5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num5ActionPerformed
         // TODO add your handling code here:
+        if(controller.isPrevTermNumber()) {
+            outputField.setText("");
+        }
         String output = controller.addToExpression("5");
         addToOutputPanel(output);
     }//GEN-LAST:event_num5ActionPerformed
 
     private void num6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num6ActionPerformed
         // TODO add your handling code here:
+        if(controller.isPrevTermNumber()) {
+            outputField.setText("");
+        }
         String output = controller.addToExpression("6");
         addToOutputPanel(output);
     }//GEN-LAST:event_num6ActionPerformed
 
     private void num7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num7ActionPerformed
         // TODO add your handling code here:
+        if(controller.isPrevTermNumber()) {
+            outputField.setText("");
+        }
         String output = controller.addToExpression("7");
         addToOutputPanel(output);
     }//GEN-LAST:event_num7ActionPerformed
 
     private void num8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num8ActionPerformed
         // TODO add your handling code here:
+        if(controller.isPrevTermNumber()) {
+            outputField.setText("");
+        }
         String output = controller.addToExpression("8");
         addToOutputPanel(output);
     }//GEN-LAST:event_num8ActionPerformed
 
     private void num9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num9ActionPerformed
         // TODO add your handling code here:
+        if(controller.isPrevTermNumber()) {
+            outputField.setText("");
+        }
         String output = controller.addToExpression("9");
         addToOutputPanel(output);
     }//GEN-LAST:event_num9ActionPerformed
 
     private void num0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num0ActionPerformed
         // TODO add your handling code here:
+        if(controller.isPrevTermNumber()) {
+            outputField.setText("");
+        }
         String output = controller.addToExpression("0");
         addToOutputPanel(output);
     }//GEN-LAST:event_num0ActionPerformed
@@ -728,15 +759,19 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void memoryAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryAddActionPerformed
         // TODO add your handling code here:
-        
+        controller.setMemNum();
     }//GEN-LAST:event_memoryAddActionPerformed
 
     private void memoryMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryMinusActionPerformed
         // TODO add your handling code here:
+        controller.deleteMemNum();
     }//GEN-LAST:event_memoryMinusActionPerformed
 
     private void memoryRecallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryRecallActionPerformed
         // TODO add your handling code here:
+        
+        String memNum = controller.addMemToExpression();
+        outputField.setText(outputField.getText() + memNum);
     }//GEN-LAST:event_memoryRecallActionPerformed
 
     /**
