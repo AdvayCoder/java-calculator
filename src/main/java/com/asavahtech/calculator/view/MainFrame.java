@@ -88,6 +88,9 @@ public class MainFrame extends javax.swing.JFrame {
         subBtn = new javax.swing.JButton();
         multBtn = new javax.swing.JButton();
         divBtn = new javax.swing.JButton();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        parenthases1 = new javax.swing.JButton();
+        parenthases2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculator Jam");
@@ -546,7 +549,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         operandKeyPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         operandKeyPanel.setPreferredSize(new java.awt.Dimension(110, 300));
-        operandKeyPanel.setLayout(new java.awt.GridLayout(4, 1));
+        operandKeyPanel.setLayout(new java.awt.GridLayout(5, 1));
 
         addBtn.setBackground(new java.awt.Color(110, 80, 181));
         addBtn.setFont(new java.awt.Font("Poppins ExtraBold", 0, 48)); // NOI18N
@@ -607,6 +610,37 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         operandKeyPanel.add(divBtn);
+
+        jSplitPane1.setDividerLocation(55);
+        jSplitPane1.setDividerSize(0);
+        jSplitPane1.setPreferredSize(new java.awt.Dimension(780, 0));
+
+        parenthases1.setBackground(new java.awt.Color(110, 80, 181));
+        parenthases1.setFont(new java.awt.Font("Poppins ExtraBold", 0, 24)); // NOI18N
+        parenthases1.setForeground(new java.awt.Color(242, 236, 255));
+        parenthases1.setText("(");
+        parenthases1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        parenthases1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parenthases1ActionPerformed(evt);
+            }
+        });
+        jSplitPane1.setLeftComponent(parenthases1);
+
+        parenthases2.setBackground(new java.awt.Color(110, 80, 181));
+        parenthases2.setFont(new java.awt.Font("Poppins ExtraBold", 0, 24)); // NOI18N
+        parenthases2.setForeground(new java.awt.Color(242, 236, 255));
+        parenthases2.setText(")");
+        parenthases2.setToolTipText("");
+        parenthases2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        parenthases2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parenthases2ActionPerformed(evt);
+            }
+        });
+        jSplitPane1.setRightComponent(parenthases2);
+
+        operandKeyPanel.add(jSplitPane1);
 
         numOperandPanel.add(operandKeyPanel, java.awt.BorderLayout.EAST);
 
@@ -774,6 +808,18 @@ public class MainFrame extends javax.swing.JFrame {
         outputField.setText(outputField.getText() + memNum);
     }//GEN-LAST:event_memoryRecallActionPerformed
 
+    private void parenthases1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parenthases1ActionPerformed
+        // TODO add your handling code here:
+        String output = controller.addToExpression("(");
+        addToOutputPanel(output);
+    }//GEN-LAST:event_parenthases1ActionPerformed
+
+    private void parenthases2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parenthases2ActionPerformed
+        // TODO add your handling code here:
+        String output = controller.addToExpression(")");
+        addToOutputPanel(output);
+    }//GEN-LAST:event_parenthases2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -817,6 +863,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton decimalBtn;
     private javax.swing.JButton divBtn;
     private javax.swing.JButton enterBtn;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton memoryAdd;
     private javax.swing.JButton memoryMinus;
     private javax.swing.JButton memoryRecall;
@@ -836,6 +883,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel operandKeyPanel;
     private javax.swing.JTextField outputField;
     private javax.swing.JPanel outputPanel;
+    private javax.swing.JButton parenthases1;
+    private javax.swing.JButton parenthases2;
     private javax.swing.JButton subBtn;
     // End of variables declaration//GEN-END:variables
 
