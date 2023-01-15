@@ -19,21 +19,34 @@ public class CalcController {
 
     double currentOutput = 0.0;
     double memNum = 0.0;
+    
+    int backParenthasesNeededCount; //the number of back parentheses needed to match the current number of front parentheses
 
     public CalcController() {
 
     }
 
     public String addToExpression(String fragment) {
+        
+        if(fragment.equals("(")) {
+            //adds 1 to the total count of back parentheses needed
+            backParenthasesNeededCount++;
+        }
+        
+        if(fragment.equals(")")) {
+            //one less back parenthesis is now needed
+            backParenthasesNeededCount--;
+        }
 
         if (fragment.equals("+") || fragment.equals("-") || fragment.equals("*") || fragment.equals("/") || fragment.equals("(") || fragment.equals(")")) {
+
             if (!tempNum.equals("")) {
                 calcExpression.add(tempNum);
             }
 
             String prevTerm = getPrevTerm();
 
-            if (prevTerm.equals("+") || prevTerm.equals("-") || prevTerm.equals("*") || prevTerm.equals("/")) {
+            if (!fragment.equals("(") && !fragment.equals(")") && (prevTerm.equals("+") || prevTerm.equals("-") || prevTerm.equals("*") || prevTerm.equals("/") || prevTerm.equals("("))) {
                 return "";
             }
 
@@ -43,10 +56,11 @@ public class CalcController {
             if (fragment.equals("*")) {
                 return "×";
             }
+
             if (fragment.equals("/")) {
                 return "÷";
             }
-            
+
             System.out.println(calcExpression);
 
             return fragment; //stop method from proceding further
@@ -98,7 +112,11 @@ public class CalcController {
 
     }
 
-    public double computeExpression() {
+    public java.lang.Double computeExpression() {
+        if(backParenthasesNeededCount != 0) {
+            return null;
+        }
+        
         if (!tempNum.equals("")) {
             calcExpression.add(tempNum);
         }
@@ -106,7 +124,7 @@ public class CalcController {
         String prevTerm = calcExpression.size() - 1 > -1 ? calcExpression.get(calcExpression.size() - 1) : "";
 
         if (prevTerm.equals("+") || prevTerm.equals("-") || prevTerm.equals("*") || prevTerm.equals("/")) {
-            return 0.0;
+            return null;
         }
 
         double finalOutput = parseExpression(calcExpression);
@@ -135,17 +153,18 @@ public class CalcController {
             }
 
             if (list.get(i).equals(")")) {
-                ArrayList<String> tempList = new ArrayList<String>();
+                ArrayList<String> tempList = new ArrayList<String>(); //for storing the items in the parenthases to calculate
                 parentheses2Idx = i;
-                
+
+                //add the parenthases items
                 for (i = parentheses1Idx + 1; i < parentheses2Idx; i++) {
                     tempList.add(list.get(i));
                 }
 
                 double output = parseExpression(tempList);
-                
-                list.set(parentheses1Idx, Double.toString(output));
 
+                //to replace the parrenthases and its items with the output for further parsing
+                list.set(parentheses1Idx, Double.toString(output));
                 list.subList(parentheses1Idx + 1, parentheses2Idx + 1).clear();
             }
         }
@@ -215,7 +234,7 @@ public class CalcController {
         }
 
         for (int i = 0; i < secondParse.size(); i++) {
-            
+
             if (secondParse.get(i).equals("+")) {
                 secondParse.remove(i);
             }
@@ -227,7 +246,7 @@ public class CalcController {
 
                 secondParse.remove(i);
             }
-            
+
         }
 
         //for the final output

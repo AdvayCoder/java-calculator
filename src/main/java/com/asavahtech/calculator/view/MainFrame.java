@@ -763,7 +763,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void enterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterBtnActionPerformed
         // TODO add your handling code here:
         //call function that computes the expression
-        double exprOutput = controller.computeExpression();
+        java.lang.Double exprOutput = controller.computeExpression();
+        if(exprOutput == null) {
+            return;
+        }
         outputField.setText(Double.toString(exprOutput));
     }//GEN-LAST:event_enterBtnActionPerformed
 
