@@ -31,16 +31,6 @@ public class MainFrame extends javax.swing.JFrame {
         this.setSize(500, 700);
         this.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setBackground((new Color(56,44,187)));
-        
-        Font poppinsRegular;
-        
-        try {
-            poppinsRegular = Font.createFont(Font.TRUETYPE_FONT, new File("Poppins-Regular.ttf"));
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(poppinsRegular);
-        } catch (IOException | FontFormatException error) {
-            System.out.println(error);
-        }
     }
     
     private void addToOutputPanel(String fragment) {
@@ -763,11 +753,11 @@ public class MainFrame extends javax.swing.JFrame {
     private void enterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterBtnActionPerformed
         // TODO add your handling code here:
         //call function that computes the expression
-        java.lang.Double exprOutput = controller.computeExpression();
+        java.lang.String exprOutput = controller.computeExpression();
         if(exprOutput == null) {
             return;
         }
-        outputField.setText(Double.toString(exprOutput));
+        outputField.setText(exprOutput);
     }//GEN-LAST:event_enterBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed

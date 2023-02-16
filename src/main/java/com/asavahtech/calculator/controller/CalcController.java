@@ -22,11 +22,16 @@ public class CalcController {
     
     int backParenthasesNeededCount; //the number of back parentheses needed to match the current number of front parentheses
 
+    boolean memAddAllowed = false;
+    boolean memRecallAllowed = false;
+    
     public CalcController() {
 
     }
 
     public String addToExpression(String fragment) {
+        
+        
         
         if(fragment.equals("(")) {
             //adds 1 to the total count of back parentheses needed
@@ -112,7 +117,7 @@ public class CalcController {
 
     }
 
-    public java.lang.Double computeExpression() {
+    public java.lang.String computeExpression() {
         if(backParenthasesNeededCount != 0) {
             return null;
         }
@@ -128,6 +133,8 @@ public class CalcController {
         }
 
         double finalOutput = parseExpression(calcExpression);
+        
+        
 
         clearExpression();
 
@@ -135,10 +142,10 @@ public class CalcController {
 
         calcExpression.add(Double.toString(finalOutput));
 
-        return finalOutput;
+        return formatNumber(finalOutput);
     }
 
-    public double parseExpression(ArrayList<String> list) { //list param is for parentheses parsing
+    private double parseExpression(ArrayList<String> list) { //list param is for parentheses parsing
         ArrayList<String> firstParse = new ArrayList<String>();
         ArrayList<String> secondParse = new ArrayList<String>();
 
@@ -258,6 +265,7 @@ public class CalcController {
     }
 
     public void setMemNum() {
+        System.out.println(currentOutput);
         memNum = currentOutput;
     }
 
@@ -273,20 +281,21 @@ public class CalcController {
             return "";
         }
 
-        if (!tempNum.equals("")) {
+        //avoid chaining of memory recalls
+        if (!tempNum.equals("")) { 
             return "";
         }
 
         addToExpression(Double.toString(memNum));
-        return Double.toString(memNum);
+        return formatNumber(memNum);
     }
 
-    public static boolean isNumeric(String strNum) {
+    private static boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
         }
         try {
-            double d = Double.parseDouble(strNum);
+            double num = Double.parseDouble(strNum);
         } catch (NumberFormatException nfe) {
             return false;
         }
@@ -294,7 +303,7 @@ public class CalcController {
         return true;
     }
 
-    public String getPrevTerm() {
+    private String getPrevTerm() {
         String prevTerm = calcExpression.size() - 1 > -1 ? calcExpression.get(calcExpression.size() - 1) : "";
         return prevTerm;
     }
@@ -303,5 +312,20 @@ public class CalcController {
         String prevTerm = getPrevTerm();
         boolean isNum = isNumeric(prevTerm);
         return isNum;
+    }
+    
+    private String formatNumber(Double num) {
+        boolean isInt = isInt(num);
+        
+        if(isInt == true) {
+            String numString = Double.toString(num);
+            return numString.substring(0, numString.length() - 2);
+        }
+        
+        return Double.toString(num);
+    }
+    
+    private boolean isInt(double num) {
+        return num % 1 == 0;
     }
 }
