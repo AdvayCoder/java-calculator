@@ -96,6 +96,7 @@ public class CalcController {
     public void clearExpression() {
         calcExpression.clear();
         tempNum = "";
+        backParenthasesNeededCount = 0;
     }
 
     public void deleteLastCharacter() {
@@ -158,38 +159,54 @@ public class CalcController {
         ArrayList<String> firstParse = new ArrayList<String>();
         ArrayList<String> secondParse = new ArrayList<String>();
 
+        ArrayList<Integer> frontParenthesesList = new ArrayList<Integer>();
+
         double finalOutput = 0;
 
-        int parentheses1Idx = -1;
-        int currentParenthase2Idx = -1;
-        
+        //marks all front parentheses
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).equals("(")) {
-                System.out.println(i);
-                parentheses1Idx = i;
+                frontParenthesesList.add(i);
+            }
+        }
 
-                //so we can get the last back parenthases, to take care of nested parenthases
-                for (int j = i; j < list.size(); j++) {
-                    if (list.get(j).equals(")")) {
-                        currentParenthase2Idx = j;
-                    }
+        System.out.println(frontParenthesesList);
+
+        for (int i = frontParenthesesList.size() - 1; i >= 0; i--) {
+            int backParenthesesIdx = -1;
+            System.out.println(frontParenthesesList.size());
+            System.out.println("i");
+            System.out.println(i);
+
+            int curentFrontParenthesesIdx = frontParenthesesList.get(i);
+
+            for (int j = curentFrontParenthesesIdx; j < list.size(); j++) {
+                if (list.get(j).equals(")")) {
+                    backParenthesesIdx = j;
+                    break;
                 }
-
-                System.out.println(currentParenthase2Idx);
-
-                ArrayList<String> tempList = new ArrayList<String>();
-
-                for (i = parentheses1Idx + 1; i < currentParenthase2Idx; i++) {
-                    tempList.add(list.get(i));
-                }
-
-                double output = parseExpression(tempList);
-
-                //to replace the parrenthases and its items with the output for further parsing
-                list.set(parentheses1Idx, Double.toString(output));
-                list.subList(parentheses1Idx + 1, currentParenthase2Idx + 1).clear();
             }
 
+            System.out.println("baack parenthese idx");
+            System.out.println(backParenthesesIdx);
+
+            ArrayList<String> tempList = new ArrayList<>();
+
+            for (int k = curentFrontParenthesesIdx + 1; k < backParenthesesIdx; k++) {
+                tempList.add(list.get(k));
+            }
+
+            double output = parseExpression(tempList);
+
+            System.out.println("output");
+            System.out.println(output);
+
+            //to replace the parrenthases and its items with the output for further parsing
+            list.set(curentFrontParenthesesIdx, Double.toString(output));
+            list.subList(curentFrontParenthesesIdx + 1, backParenthesesIdx + 1).clear();
+
+            System.out.println("final list");
+            System.out.println(list);
         }
 
         //first for multiplying
