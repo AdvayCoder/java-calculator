@@ -54,6 +54,7 @@ public class MainFrame extends javax.swing.JFrame {
         calcPanel = new javax.swing.JPanel();
         outputPanel = new javax.swing.JPanel();
         outputField = new javax.swing.JTextField();
+        minimalVersionBtn = new javax.swing.JButton();
         numOperandPanel = new javax.swing.JPanel();
         numKeyPanel = new javax.swing.JPanel();
         num1 = new javax.swing.JButton();
@@ -103,6 +104,21 @@ public class MainFrame extends javax.swing.JFrame {
         outputField.setMinimumSize(new java.awt.Dimension(64, 65));
         outputField.setPreferredSize(new java.awt.Dimension(64, 120));
         outputPanel.add(outputField, java.awt.BorderLayout.CENTER);
+
+        minimalVersionBtn.setBackground(new java.awt.Color(50, 31, 171));
+        minimalVersionBtn.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        minimalVersionBtn.setForeground(new java.awt.Color(225, 204, 255));
+        minimalVersionBtn.setText("Minimal Version");
+        minimalVersionBtn.setBorder(null);
+        minimalVersionBtn.setFocusPainted(false);
+        minimalVersionBtn.setMaximumSize(new java.awt.Dimension(64, 100));
+        minimalVersionBtn.setMinimumSize(new java.awt.Dimension(64, 35));
+        minimalVersionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minimalVersionBtnActionPerformed(evt);
+            }
+        });
+        outputPanel.add(minimalVersionBtn, java.awt.BorderLayout.PAGE_START);
 
         calcPanel.add(outputPanel, java.awt.BorderLayout.NORTH);
 
@@ -757,6 +773,7 @@ public class MainFrame extends javax.swing.JFrame {
         if(exprOutput == null) {
             return;
         }
+        
         outputField.setText(exprOutput);
     }//GEN-LAST:event_enterBtnActionPerformed
 
@@ -813,6 +830,11 @@ public class MainFrame extends javax.swing.JFrame {
         addToOutputPanel(output);
     }//GEN-LAST:event_parenthases2ActionPerformed
 
+    private void minimalVersionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minimalVersionBtnActionPerformed
+        // TODO add your handling code here:
+        MinimalVersionFrame frame = new MinimalVersionFrame();
+    }//GEN-LAST:event_minimalVersionBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -860,6 +882,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton memoryAdd;
     private javax.swing.JButton memoryMinus;
     private javax.swing.JButton memoryRecall;
+    private javax.swing.JButton minimalVersionBtn;
     private javax.swing.JButton multBtn;
     private javax.swing.JButton num0;
     private javax.swing.JButton num1;
