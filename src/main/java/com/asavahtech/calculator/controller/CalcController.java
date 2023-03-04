@@ -4,6 +4,8 @@
  */
 package com.asavahtech.calculator.controller;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 /**
@@ -143,6 +145,9 @@ public class CalcController {
         }
 
         double finalOutput = parseExpression(calcExpression);
+        
+        //rounds to 7 decimal places if necessary
+        finalOutput = round(finalOutput, 7);
 
         clearExpression();
 
@@ -214,8 +219,17 @@ public class CalcController {
             System.out.println("first parse list");
             System.out.println(list);
             if (list.get(i).equals("*")) {
-                double prevNum = Double.parseDouble(list.get(i - 1));
-                double nextNum = Double.parseDouble(list.get(i + 1));
+                double prevNum;
+                double nextNum;
+
+                if ((i - 2) > -1 && list.get(i - 2).equals("*")) {
+                    prevNum = Double.parseDouble(firstParse.get(firstParse.size() - 1));
+                    nextNum = Double.parseDouble(list.get(i + 1));
+                } else {
+
+                    prevNum = Double.parseDouble(list.get(i - 1));
+                    nextNum = Double.parseDouble(list.get(i + 1));
+                }
 
                 String sign = (i - 2) > -1 ? list.get(i - 2) : "";
 
@@ -246,8 +260,17 @@ public class CalcController {
         //,then for dividing
         for (int i = 0; i < firstParse.size(); i++) {
             if (firstParse.get(i).equals("/")) {
-                double prevNum = Double.parseDouble(firstParse.get(i - 1));
-                double nextNum = Double.parseDouble(firstParse.get(i + 1));
+                double prevNum;
+                double nextNum;
+
+                if ((i - 2) > -1 && list.get(i - 2).equals("/")) {
+                    prevNum = Double.parseDouble(secondParse.get(secondParse.size() - 1));
+                    nextNum = Double.parseDouble(firstParse.get(i + 1));
+                } else {
+
+                    prevNum = Double.parseDouble(firstParse.get(i - 1));
+                    nextNum = Double.parseDouble(firstParse.get(i + 1));
+                }
 
                 String sign = i > 2 ? list.get(i - 2) : "";
 
@@ -358,5 +381,15 @@ public class CalcController {
 
     private boolean isInt(double num) {
         return num % 1 == 0;
+    }
+
+    private static double round(double value, int places) {
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        BigDecimal bigDec = BigDecimal.valueOf(value);
+        bigDec = bigDec.setScale(places, RoundingMode.HALF_UP);
+        return bigDec.doubleValue();
     }
 }

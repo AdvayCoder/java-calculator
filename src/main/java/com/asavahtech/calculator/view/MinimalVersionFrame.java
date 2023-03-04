@@ -10,6 +10,9 @@ import java.awt.event.KeyEvent;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import com.asavahtech.calculator.controller.CalcController;
+import java.awt.Image;
+import java.net.URL;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -24,12 +27,21 @@ public class MinimalVersionFrame extends javax.swing.JFrame {
     
     public MinimalVersionFrame() {
         initComponents();
+        final URL url = this.getClass().getResource("/com/asavahtech/calculator/view/logo.jpg");
+        if (url != null) {
+            ImageIcon LOGO_IMAGE = new ImageIcon(url);
+            final Image img =  LOGO_IMAGE.getImage();
+            if (img != null) {
+                this.setIconImage(LOGO_IMAGE.getImage());
+            }
+        }
         this.setVisible(true);
         this.setResizable(false);
         this.setSize(400, 150);
         this.setTitle("Calculator Jam - Minimal");
         this.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         this.setAlwaysOnTop(true);
+        this.setTitle("Num Crunch - On The Go");
 
 
         inputField.getDocument().addDocumentListener(new DocumentListener() {
